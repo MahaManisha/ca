@@ -1,0 +1,257 @@
+/* Enhanced Signup Box - Ultra Transparent Version with Perfect Centering */
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Navbar fonts */
+.navbar, .nav-links, .header-nav {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Signup Container */
+.signup-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(15,32,72,0.2)),
+              url('../src/assets/nec-college.jpg') center/cover no-repeat fixed;
+  padding: 30px;
+  font-family: 'Inter', 'Poppins', system-ui, -apple-system, sans-serif;
+}
+
+/* Signup Card */
+.signup-card {
+  width: 500px;
+  min-height: 650px;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(8px);
+  border-radius: 25px;
+  border: 3px solid rgba(255,255,255,0.3);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.2), 0 30px 60px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.05);
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px;
+  animation: cardSlideIn 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Animated Card */
+@keyframes cardSlideIn {
+  from { opacity: 0; transform: scale(0.8) translateX(100px) rotate(10deg);}
+  to { opacity: 1; transform: scale(1) translateX(0) rotate(0deg);}
+}
+
+/* Animated Card Border */
+.signup-card::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  border-radius: 27px;
+  background: linear-gradient(45deg, rgba(255,255,255,0.4), rgba(255,255,255,0.2), rgba(255,255,255,0.4), rgba(255,255,255,0.2));
+  background-size: 400% 400%;
+  z-index: -1;
+  animation: borderRotate 4s linear infinite;
+}
+
+@keyframes borderRotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Card Title */
+.signup-card h2 {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #003366;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  animation: titleBounceIn 1.5s cubic-bezier(0.68,-0.55,0.265,1.55) 0.3s both;
+  font-family: 'Montserrat', sans-serif;
+}
+
+@keyframes titleBounceIn {
+  from { opacity: 0; transform: translateY(-50px) scale(0.5);}
+  to { opacity: 1; transform: translateY(0) scale(1);}
+}
+
+/* Message */
+.message {
+  padding: 16px 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-align: center;
+  animation: messageSlideDown 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+  backdrop-filter: blur(10px);
+  font-size: 1rem;
+  width: 100%;
+  background: rgba(16,185,129,0.2);
+  color: #ffffff;
+  border: 2px solid rgba(16,185,129,0.4);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+@keyframes messageSlideDown {
+  from { opacity:0; transform: translateY(-30px) scale(0.8);}
+  to { opacity:1; transform: translateY(0) scale(1);}
+}
+
+/* Form Layout */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+}
+
+/* Input Group */
+.input-group {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+
+.input-group .icon {
+  position: static;
+  margin-right: 15px;
+  font-size: 1.2rem;
+  color: #000000;
+  text-shadow: none;
+  z-index: 2;
+}
+
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 18px 20px;
+  background: rgba(255,255,255,0.08);
+  border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 15px;
+  color: #000000;
+  font-size: 1.1rem;
+  font-weight: 500;
+  outline: none;
+  backdrop-filter: blur(5px);
+  box-sizing: border-box;
+  text-shadow: none;
+  box-shadow: none;
+  font-family: 'Inter', 'Poppins', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.input-group select {
+  padding-left: 20px;
+}
+
+/* Placeholders black */
+.input-group input::placeholder,
+.input-group select::placeholder {
+  color: rgba(0,0,0,0.6);
+  font-weight: 500; /* unify placeholder font weight */
+}
+
+/* Focus style */
+.input-group input:focus,
+.input-group select:focus {
+  border-color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.12);
+  color: #000000;
+  box-shadow: none; /* remove focus box shadow */
+}
+
+/* Photo input label */
+.photo-label {
+  font-weight: 500; /* unify photo label font weight */
+  text-shadow: none; /* remove any text shadow */
+  box-shadow: none; /* remove any box shadow */
+}
+
+/* Photo input label */
+.photo-input-group input[type="file"] {
+  display: none;
+}
+
+.photo-label {
+  display: block;
+  padding: 18px 20px;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 15px;
+  cursor: pointer;
+  color: #000000; /* label text black */
+  background: rgba(255,255,255,0.08);
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.photo-label:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* Submit Button */
+.signup-btn {
+  width: 100%;
+  padding: 20px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 15px;
+  color: #250360;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.4s ease;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.signup-btn:hover:not(:disabled) {
+  background: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.5);
+  transform: translateY(-3px) scale(1.02);
+}
+
+.signup-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Login Link */
+.login-link {
+  text-align: center;
+  margin-top: 20px;
+  color: #000000; /* black login text */
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.login-link span {
+  color: #052da5;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .signup-card { width: 100%; max-width: 450px; min-height: 580px; padding: 40px 35px;}
+}
+
+@media (max-width: 480px) {
+  .signup-card { padding: 30px 25px; min-height: 550px;}
+  .signup-card h2 { font-size: 1.8rem; }
+  .input-group input, .input-group select, .photo-label { padding: 16px; font-size: 1rem; }
+}

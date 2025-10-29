@@ -1,0 +1,665 @@
+/* ============================================
+   LOGIN PAGE - UNIFIED THEME
+   Matching Home Page Design System
+   ============================================ */
+
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --primary-light: #dbeafe;
+  --secondary: #10b981;
+  --accent: #f59e0b;
+  --text-dark: #1f2937;
+  --text-light: #6b7280;
+  --text-lighter: #9ca3af;
+  --border: #e5e7eb;
+  --bg-light: #f9fafb;
+  --bg-white: #ffffff;
+  --error: #dc2626;
+  --error-bg: rgba(239, 68, 68, 0.1);
+  --success: #10b981;
+  --success-bg: rgba(16, 185, 129, 0.1);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* ==================== NAVIGATION FONTS ==================== */
+.navbar, .nav-links, .header-nav {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ==================== LOGIN PAGE ==================== */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 50%, #dbeafe 100%);
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Decorative background orbs */
+.login-page::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  right: -12%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatOrb 15s ease-in-out infinite;
+}
+
+.login-page::after {
+  content: "";
+  position: absolute;
+  bottom: -30%;
+  left: -8%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatOrb 18s ease-in-out infinite reverse;
+}
+
+@keyframes floatOrb {
+  0%, 100% { 
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  50% { 
+    transform: translate(40px, -40px) scale(1.15);
+    opacity: 0.8;
+  }
+}
+
+/* ==================== COLLEGE NAME OVERLAY ==================== */
+.college-overlay {
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  transform: translateY(-50%);
+  z-index: 3;
+  text-align: left;
+  color: var(--text-dark);
+  animation: collegeNameSlideIn 1s ease-out 0.3s both;
+  max-width: 600px;
+}
+
+@keyframes collegeNameSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+.college-overlay .college-name {
+  font-size: 4.5rem;
+  font-weight: 900;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  animation: nameGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes nameGlow {
+  from { 
+    filter: drop-shadow(0 4px 20px rgba(37, 99, 235, 0.3));
+  }
+  to { 
+    filter: drop-shadow(0 4px 30px rgba(37, 99, 235, 0.5));
+  }
+}
+
+.college-overlay .cms-subtitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-dark);
+  margin-bottom: 25px;
+  animation: subtitleFadeIn 1s ease-out 0.6s both;
+}
+
+@keyframes subtitleFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.college-overlay .welcome-text {
+  margin-top: 35px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  opacity: 0.9;
+  max-width: 450px;
+  line-height: 1.6;
+  color: var(--text-light);
+  animation: welcomeSlideUp 1s ease-out 0.9s both;
+}
+
+@keyframes welcomeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+}
+
+/* ==================== LOGIN CARD ==================== */
+.login-card {
+  width: 500px;
+  min-height: 580px;
+  background: var(--bg-white);
+  border-radius: 16px;
+  overflow: visible;
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  z-index: 2;
+  animation: cardSlideIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+}
+
+/* Gradient top border accent */
+.login-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 16px 16px 0 0;
+}
+
+/* Decorative circle */
+.login-card::after {
+  content: "";
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(16, 185, 129, 0.05));
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Remove old welcome section */
+.welcome-section {
+  display: none;
+}
+
+/* ==================== FORM SECTION ==================== */
+.form-section {
+  width: 100%;
+  padding: 40px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: transparent;
+  position: relative;
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+
+.form-section h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+  animation: titleBounceIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s both;
+  text-align: center;
+  position: relative;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+@keyframes titleBounceIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.form-section .subtitle {
+  color: var(--text-light);
+  margin-bottom: 25px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  animation: subtitleSlideIn 1s ease-out 0.6s both;
+  letter-spacing: 0.3px;
+}
+
+@keyframes subtitleSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==================== MESSAGE STYLES ==================== */
+.message {
+  padding: 1rem 1.2rem;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-align: center;
+  animation: messageSlideDown 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+@keyframes messageSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.message.success {
+  background: var(--success-bg);
+  color: var(--success);
+  border: 2px solid var(--success);
+}
+
+.message.error {
+  background: var(--error-bg);
+  color: var(--error);
+  border: 2px solid var(--error);
+}
+
+/* ==================== FORM STYLES ==================== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ==================== INPUT GROUPS ==================== */
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  animation: inputSlideIn 0.8s ease-out both;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
+.input-group:nth-child(1) { animation-delay: 0.8s; }
+.input-group:nth-child(2) { animation-delay: 1s; }
+
+@keyframes inputSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.input-group .icon {
+  position: absolute;
+  left: 16px;
+  font-size: 1.1rem;
+  color: var(--text-light);
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.95rem 1.2rem 0.95rem 3rem;
+  background: var(--bg-white);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  color: var(--text-dark);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  outline: none;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.input-group input::placeholder {
+  color: var(--text-lighter);
+  font-weight: 400;
+  font-size: 0.95rem;
+}
+
+.input-group input:focus {
+  border-color: var(--primary);
+  background: var(--bg-white);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  transform: translateY(-2px);
+}
+
+.input-group input:focus + .icon {
+  color: var(--primary);
+  transform: scale(1.1);
+}
+
+/* ==================== BUTTON ==================== */
+button,
+form button[type="submit"] {
+  width: 100%;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+  animation: buttonSlideIn 0.8s ease-out 1.2s both;
+  letter-spacing: 0.3px;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: inherit;
+  margin-top: 10px;
+}
+
+@keyframes buttonSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Button shine effect */
+form button[type="submit"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.4s ease;
+}
+
+form button[type="submit"]:hover::before {
+  left: 100%;
+}
+
+button:hover,
+form button[type="submit"]:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+form button[type="submit"]:active {
+  transform: translateY(-1px);
+}
+
+form button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ==================== SIGNUP TEXT ==================== */
+.signup-text {
+  text-align: center;
+  margin-top: 20px;
+  color: var(--text-dark);
+  font-size: 1rem;
+  font-weight: 500;
+  animation: signupTextFadeIn 0.8s ease-out 1.4s both;
+  box-sizing: border-box;
+}
+
+@keyframes signupTextFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.signup-link {
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.signup-link:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 1024px) {
+  .login-page {
+    padding: 20px;
+  }
+  
+  .login-card {
+    margin-right: 20px;
+  }
+  
+  .college-overlay {
+    left: 5%;
+  }
+  
+  .college-overlay .college-name {
+    font-size: 3.8rem;
+  }
+  
+  .college-overlay .cms-subtitle {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-page {
+    justify-content: center;
+    padding: 15px;
+    flex-direction: column;
+  }
+  
+  .login-card {
+    width: 100%;
+    max-width: 450px;
+    margin-right: 0;
+    margin-top: 20px;
+    min-height: 540px;
+  }
+  
+  .college-overlay {
+    position: static;
+    transform: none;
+    margin-bottom: 30px;
+    padding: 25px;
+    background: var(--bg-white);
+    border-radius: 16px;
+    border: 2px solid var(--border);
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+
+  .college-overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 16px 16px 0 0;
+  }
+  
+  .college-overlay .college-name {
+    font-size: 3.2rem;
+  }
+  
+  .college-overlay .cms-subtitle {
+    font-size: 1.4rem;
+  }
+  
+  .college-overlay .welcome-text {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    color: var(--text-light);
+  }
+  
+  .form-section {
+    padding: 35px 30px;
+  }
+  
+  .form-section h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-page {
+    padding: 10px;
+  }
+  
+  .login-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .college-overlay {
+    padding: 20px;
+  }
+  
+  .college-overlay .college-name {
+    font-size: 2.6rem;
+  }
+  
+  .college-overlay .cms-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .form-section {
+    padding: 25px 20px;
+  }
+  
+  .form-section h2 {
+    font-size: 1.8rem;
+  }
+  
+  .input-group input {
+    padding: 0.85rem 1rem 0.85rem 2.8rem;
+    font-size: 0.95rem;
+  }
+  
+  .input-group .icon {
+    left: 14px;
+    font-size: 1rem;
+  }
+  
+  form button[type="submit"] {
+    padding: 0.9rem 1.8rem;
+    font-size: 1rem;
+  }
+
+  .signup-text {
+    font-size: 0.95rem;
+  }
+}
+
+/* ==================== SCROLLBAR STYLING ==================== */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-light);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary) 100%);
+}

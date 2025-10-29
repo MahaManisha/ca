@@ -1,0 +1,105 @@
+.knowledge-list-container {
+  padding: 40px 80px;
+  background-color: #f9fafb;
+  min-height: 100vh;
+}
+
+.knowledge-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #1a202c;
+}
+
+.knowledge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.knowledge-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.knowledge-card:hover {
+  transform: translateY(-5px);
+}
+
+.knowledge-card h3 {
+  font-size: 1.3rem;
+  color: #2d3748;
+  margin-bottom: 10px;
+}
+
+.desc {
+  font-size: 0.95rem;
+  color: #4a5568;
+  margin-bottom: 10px;
+}
+
+.author {
+  font-size: 0.85rem;
+  color: #718096;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.price.free {
+  color: #38a169;
+}
+
+.price.paid {
+  color: #e53e3e;
+}
+
+.cart-btn,
+.download-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.cart-btn {
+  background-color: #3182ce;
+  color: #fff;
+}
+
+.cart-btn:hover {
+  background-color: #2b6cb0;
+}
+
+.download-btn {
+  background-color: #48bb78;
+  color: white;
+}
+
+.download-btn:hover {
+  background-color: #38a169;
+}
+
+.no-knowledge {
+  text-align: center;
+  color: #718096;
+  font-size: 1rem;
+  margin-top: 40px;
+}
+
+.knowledge-loading {
+  text-align: center;
+  padding: 80px;
+  font-size: 1.5rem;
+  color: #4a5568;
+}

@@ -1,0 +1,27 @@
+/* ItemCard.css */
+
+.item-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem;
+  background-color: white;
+  width: 250px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+  transition: transform 0.2s;
+}
+
+.item-card:hover {
+  transform: scale(1.03);
+}
+
+.item-card h3 {
+  margin: 0 0 0.5rem 0;
+  color: #007BFF;
+}
+
+.item-card p {
+  margin: 0;
+  color: #555;
+}
