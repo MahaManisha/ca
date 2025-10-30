@@ -46,7 +46,7 @@ import User from "./models/User.js";
 // ✅ Routes
 import itemRoutes from "./routes/itemRoutes.js";
 import cartRoutes from "./routes/CartRoutes.js";
-import contactRoutes from "./routes/contactRoutes.js";
+import contactRoutes from "./routes/ContactRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import requestRoutes from "./routes/requestRoutes.js";
 import knowledgeRoutes from "./routes/knowledgeRoutes.js";
