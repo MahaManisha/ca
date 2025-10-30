@@ -1,5 +1,5 @@
 // ============================================
-// models/cart.js - Complete Cart Model
+// models/cart.js - Fixed Cart Model
 // ============================================
 
 import mongoose from "mongoose";
@@ -12,57 +12,19 @@ const cartItemSchema = new mongoose.Schema(
       ref: "Item", 
       required: true 
     },
-    name: { 
-      type: String, 
-      required: true 
-    },
-    yearsUsed: { 
-      type: Number, 
-      required: true 
-    },
-    price: { 
-      type: Number, 
-      required: true 
-    },
-    quantity: { 
-      type: Number, 
-      required: true, 
-      min: 1, 
-      default: 1 
-    },
-    deliveryOption: { 
-      type: String, 
-      required: true 
-    },
-    photos: { 
-      type: [String], 
-      default: [] 
-    },
+    name: { type: String, required: true },
+    yearsUsed: { type: Number, required: true },
+    price: { type: Number, required: true },
+    quantity: { type: Number, required: true, min: 1, default: 1 },
+    deliveryOption: { type: String, required: true },
+    photos: { type: [String], default: [] },
     seller: {
-      _id: { 
-        type: mongoose.Schema.Types.ObjectId, 
-        required: true 
-      },
-      name: { 
-        type: String, 
-        required: true 
-      },
-      email: { 
-        type: String, 
-        required: true 
-      },
-      photo: {
-        type: String,
-        default: ""
-      },
-      department: {
-        type: String,
-        default: ""
-      },
-      year: {
-        type: String,
-        default: ""
-      }
+      _id: { type: mongoose.Schema.Types.ObjectId, required: true },
+      name: { type: String, required: true },
+      email: { type: String, required: true },
+      photo: { type: String, default: "" },
+      department: { type: String, default: "" },
+      year: { type: String, default: "" },
     },
   },
   { _id: false } // Don't create _id for subdocuments
@@ -76,18 +38,13 @@ const cartSchema = new mongoose.Schema(
       required: true,
       unique: true, // One cart per user
     },
-    items: { 
-      type: [cartItemSchema], 
-      default: [] 
-    },
+    items: { type: [cartItemSchema], default: [] },
   },
-  { 
-    timestamps: true 
-  }
+  { timestamps: true }
 );
 
-// Index for faster queries
-cartSchema.index({ userId: 1 });
+// ✅ Removed duplicate manual index
+// cartSchema.index({ userId: 1 });
 
 // Clean JSON output
 cartSchema.set("toJSON", {
