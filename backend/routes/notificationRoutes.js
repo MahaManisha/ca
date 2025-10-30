@@ -1,6 +1,6 @@
 // backend/routes/notificationRoutes.js
 import express from "express";
-import Notification from "../models/Notification.js";
+import Notification from "../models/notification.js";
 import { protect } from "../middleware/Protect.js";
 
 const router = express.Router();
@@ -82,5 +82,6 @@ router.delete("/:id", protect, async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
+
 
 export default router;
