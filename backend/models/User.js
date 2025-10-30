@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema(
       maxlength: [50, "Username must be less than 50 characters"],
       match: [
         /^[a-zA-Z0-9._\-\s]+$/,
-        "Username can only contain letters, numbers, spaces, dots, hyphens, and underscores"
+        "Username can only contain letters, numbers, spaces, dots, hyphens, and underscores",
       ],
     },
 
@@ -84,12 +84,6 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-// ================== INDEXES ==================
-// Improve query performance and enforce uniqueness
-userSchema.index({ email: 1 }, { unique: true });
-userSchema.index({ username: 1 }, { unique: true });
-userSchema.index({ googleId: 1 }, { unique: true, sparse: true });
-
 // ================== METHODS ==================
 // Hide sensitive fields when converting to JSON
 userSchema.methods.toJSON = function () {
@@ -104,19 +98,19 @@ userSchema.methods.toJSON = function () {
 userSchema.pre("save", async function (next) {
   // Only run if username is modified or new
   if (!this.isModified("username")) return next();
-  
+
   try {
-    const existingUser = await this.constructor.findOne({ 
+    const existingUser = await this.constructor.findOne({
       username: this.username,
-      _id: { $ne: this._id } 
+      _id: { $ne: this._id },
     });
-    
+
     if (existingUser) {
       const error = new Error("Username already taken");
       error.status = 400;
       return next(error);
     }
-    
+
     next();
   } catch (err) {
     next(err);
